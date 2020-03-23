@@ -1,0 +1,21 @@
+1. Установите СУБД MySQL. Создайте в домашней директории файл .my.cnf, задав в нем логин и пароль, который указывался при установке.
+    Из windows подключаемся к ubuntu:
+      C:\Users\Алексей>ssh aleksei@192.168.1.108
+      aleksei@ubuntu-MySQL:~$ vim .my.cnf
+        [client]
+        user=root
+        password=123456!
+      chmod 600 .my.cnf
+      
+2. Создайте базу данных example, разместите в ней таблицу users, состоящую из двух столбцов, числового id и строкового name.
+      mysql> CREATE DATABASE example;
+      mysql> USE example
+      mysql> CREATE TABLE users (id INT, name VARCHAR(255));
+    
+3. Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
+      mysql> exit
+      aleksei@ubuntu-MySQL:~$ mysqldump example > example.sql
+      aleksei@ubuntu-MySQL:~$ mysql
+      mysql> create database sample;
+      mysql> use sample
+      mysql> source example.sql;
