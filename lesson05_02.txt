@@ -1,0 +1,5 @@
+1. Подсчитайте средний возраст пользователей в таблице users
+	SELECT AVG(TIMESTAMPDIFF(YEAR, birthday_at, NOW())) FROM users;
+2. Подсчитайте количество дней рождения, которые приходятся на каждый из дней недели. 
+Следует учесть, что необходимы дни недели текущего года, а не года рождения.
+	SELECT DAYNAME(birthday_at), COUNT(*) FROM users GROUP BY DAYNAME(birthday_at);
