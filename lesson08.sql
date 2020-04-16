@@ -19,7 +19,6 @@ FROM profiles
 -- 4. Найти 10 пользователей, которые проявляют наименьшую активность в использовании социальной сети.
 
 -- За активность пользователя примем сумму количества лайков, постов и сообщений.
--- Объединяем таблицы likes, posts и messages. И подсчитываем, с помощью COUNT(*), сколько раз встречается каждый пользователь.
 SELECT users.id, COUNT(likes.user_id) + COUNT(posts.user_id) + COUNT(messages.from_user_id) AS user_activity
 FROM users
   LEFT JOIN likes
